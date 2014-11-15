@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, CameraActivity.class);
+				intent.setClass(MainActivity.this, Camera2FileActivity.class);
 				startActivity(intent);
 			}
 		});

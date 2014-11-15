@@ -9,8 +9,28 @@
     tools:context="com.eva.me.hackshanghai_diffchoice.Camera2FileActivity" >
 
     <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hello_world" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/textView1"
+        android:layout_marginRight="24dp"
+        android:text="Button" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button1"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="107dp"
+        android:layout_toRightOf="@+id/textView1"
+        android:src="@drawable/ic_launcher" />
 
 </RelativeLayout>
