@@ -12,9 +12,10 @@ public class ZoomListener implements OnTouchListener{
 	private float oldDist = 0f;
 	private float measureDis  = 10f;//达到一定程度的距离才能够识别
 	
-	private final static int UpDown = 1;
-	private final static int LeftRight = 2;
-	private final static int NONE = -1;
+	public final static int UpDown = 1;
+	public final static int LeftRight = 2;
+	public final static int NONE = -1;
+	private boolean hasDirection = false;
 	
 	private static int direction = NONE;
 	
@@ -40,6 +41,7 @@ public class ZoomListener implements OnTouchListener{
 		case MotionEvent.ACTION_UP:
 			mode = 0;
 			direction = NONE;
+			hasDirection = false;
 			break;
 			
 		case MotionEvent.ACTION_POINTER_UP:
@@ -57,12 +59,12 @@ public class ZoomListener implements OnTouchListener{
 				if (newDist > (oldDist+3+measureDis)) {
 					//large
 					if (mZoomLargeListener != null) {
-						mZoomLargeListener.onZoomLarge();
+						mZoomLargeListener.onZoomLarge(direction);
 					}
 				}else if (newDist < (oldDist+3+measureDis)) {
 					//small
 					if (mZoomSmallListener!=null) {
-						mZoomSmallListener.onZoomSmall();
+						mZoomSmallListener.onZoomSmall(direction);
 					}
 				}
 			}
@@ -78,10 +80,13 @@ public class ZoomListener implements OnTouchListener{
 		float x = event.getX(0) - event.getX(1);
 		float y = event.getY(0) - event.getY(1);
 		
-		float xAbs = Math.abs(x);
-		float yAbs = Math.abs(y);
-		
-		direction = xAbs>yAbs?LeftRight:UpDown;
+		if(!hasDirection) {
+			float xAbs = Math.abs(x);
+			float yAbs = Math.abs(y);
+			
+			direction = xAbs>yAbs?LeftRight:UpDown;
+			hasDirection = true;
+		}
 		
 		return FloatMath.sqrt(x * x + y * y);
 	}
