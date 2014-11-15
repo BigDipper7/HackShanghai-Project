@@ -47,8 +47,8 @@ public class Camera2FileActivity extends Activity {
 				File f = null;
 				f = FileUtils.getPhotoDir();
 				iStartCamera.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-//				startActivityForResult(iStartCamera, 1);
-				startActivity(iStartCamera);
+				startActivityForResult(iStartCamera, 1);
+//				startActivity(iStartCamera);
 			}
 			
 		});
@@ -58,8 +58,10 @@ public class Camera2FileActivity extends Activity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (resultCode == Activity.RESULT_OK) {
-			Bundle bundle = data.getExtras();
-			Bitmap bm = (Bitmap) bundle.get("data");
+//			Bundle bundle = data.getExtras();//用这两句就有问题 妈蛋。。。也是醉了
+//			Bitmap bm = (Bitmap) bundle.get("data");
+			Log.d(TAG, "onActivityResult in");//曲线救国喽~
+			Bitmap bm = FileUtils.getLoacalBitmap();
 			ivReveal.setImageBitmap(bm);
 			
 		}
