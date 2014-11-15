@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.eva.me.hackshanghai_diffchoice.listener.ZoomListener;
 import com.eva.me.hackshanghai_diffchoice.util.FileUtils;
 
 import android.app.Activity;
@@ -49,6 +50,10 @@ public class CameraActivity extends Activity {
 		btnCamera = (Button) findViewById(R.id.button1);
 		ivReveal = (ImageView) findViewById(R.id.imageView1);
 		
+		ZoomListener mZoomListener = new ZoomListener();
+		
+		
+		ivReveal.setOnTouchListener(l);
 		
 		btnCamera.setOnClickListener(new OnClickListener() {
 			

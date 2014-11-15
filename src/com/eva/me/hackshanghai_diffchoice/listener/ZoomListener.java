@@ -19,14 +19,14 @@ public class ZoomListener implements OnTouchListener{
 	
 	private static int direction = NONE;
 	
-	private static onZoomLargeListener mZoomLargeListener = null;
-	private static onZoomSmallListener mZoomSmallListener = null;
+	private onZoomLargeListener mZoomLargeListener = null;
+	private onZoomSmallListener mZoomSmallListener = null;
 	
-	public static void setOnZoomLargeListener(onZoomLargeListener mOnZoomLargeListener) {
+	public void setOnZoomLargeListener(onZoomLargeListener mOnZoomLargeListener) {
 		mZoomLargeListener = mOnZoomLargeListener;
 	}
 	
-	public static void setOnZoomSmallListener(onZoomSmallListener mOnZoomSmallListener) {
+	public void setOnZoomSmallListener(onZoomSmallListener mOnZoomSmallListener) {
 		mZoomSmallListener = mOnZoomSmallListener;
 	}
 	
