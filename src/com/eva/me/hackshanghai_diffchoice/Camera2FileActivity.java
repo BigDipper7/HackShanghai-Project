@@ -2,17 +2,23 @@ package com.eva.me.hackshanghai_diffchoice;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.BreakIterator;
+import java.util.List;
 
 import com.eva.me.hackshanghai_diffchoice.listener.ZoomListener;
 import com.eva.me.hackshanghai_diffchoice.listener.onZoomLargeListener;
 import com.eva.me.hackshanghai_diffchoice.listener.onZoomSmallListener;
 import com.eva.me.hackshanghai_diffchoice.util.FileUtils;
+import com.eva.me.hackshanghai_diffchoice.util.ImagePiece;
+import com.eva.me.hackshanghai_diffchoice.util.ImageUtils;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
@@ -22,14 +28,16 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Camera2FileActivity extends Activity {
 
-	private Button btnCamera;
-	private Bitmap bm;
+	private Button btnCamera, btnConfirm;
+	private Bitmap bm=null;
 	private ImageView ivReveal;
 	private TextView tvRight, tvTop;
 	private String TAG = "Camera2FileActivity";
+	private Context context;
 	
 	private int sizeVertical = 2;
 	private int sizeHorizontal = 2;
@@ -39,6 +47,16 @@ public class Camera2FileActivity extends Activity {
 	
 	private boolean hasResult  = false;
 	
+	//TEMP
+	Handler mHandler;
+	List<ImagePiece> lPieces;
+	Runnable runnable;
+	int label = 0;
+	
+	private void showToast(Context context, String str) {
+		Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,8 +65,10 @@ public class Camera2FileActivity extends Activity {
 	}
 
 	private void init() {
+		context = Camera2FileActivity.this;
 		//init views
-		btnCamera = (Button) findViewById( R.id.button1);
+		btnCamera = (Button) findViewById( R.id.btnCamera);
+		btnConfirm = (Button) findViewById(R.id.btnConfirm);
 		ivReveal = (ImageView) findViewById( R.id.imageView1);
 		tvRight = (TextView) findViewById(R.id.tvRight);
 		tvTop = (TextView) findViewById(R.id.tvTop);
@@ -66,6 +86,48 @@ public class Camera2FileActivity extends Activity {
 			}
 			
 		});
+		
+		btnConfirm.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if (bm != null) {
+					lPieces = ImageUtils.split(bm, sizeHorizontal, sizeVertical);
+					
+					mHandler.obtainMessage(1223).sendToTarget();
+				}else {
+					showToast(context, "没有图片~ 请先拍摄...");
+				}
+			}
+		});
+		
+		//TEMP
+		mHandler = new Handler() {
+			public void handleMessage(android.os.Message msg) {
+				switch (msg.what) {
+				case 1223:
+					mHandler.postDelayed(runnable, 1000);
+					break;
+
+				default:
+					break;
+				}
+			};
+		};
+		
+		runnable = new Runnable() {
+			
+			@Override
+			public void run() {
+				if (label >= lPieces.size()) {
+					return;
+				}
+				ImagePiece temp = lPieces.get(label);
+				ivReveal.setImageBitmap(temp.bitmap);
+				label++;
+				mHandler.postDelayed(runnable, 1000);
+			}
+		};
 		
 		ZoomListener mZoomListener = new ZoomListener();
 		mZoomListener.setOnZoomLargeListener(new onZoomLargeListener() {
@@ -119,7 +181,7 @@ public class Camera2FileActivity extends Activity {
 //			Bundle bundle = data.getExtras();//用这两句就有问题 妈蛋。。。也是醉了
 //			Bitmap bm = (Bitmap) bundle.get("data");
 			Log.d(TAG, "onActivityResult in");//曲线救国喽~
-			Bitmap bm = FileUtils.getLoacalBitmap();
+			bm = FileUtils.getLoacalBitmap();
 			ivReveal.setImageBitmap(bm);
 			hasResult = true;
 		}
