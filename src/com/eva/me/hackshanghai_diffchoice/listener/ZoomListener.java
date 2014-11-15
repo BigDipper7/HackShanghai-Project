@@ -57,11 +57,13 @@ public class ZoomListener implements OnTouchListener{
 			if (mode >= 2) {
 				float newDist = spaceing(event);
 				if (newDist > (oldDist+3+measureDis)) {
+					oldDist = newDist;
 					//large
 					if (mZoomLargeListener != null) {
 						mZoomLargeListener.onZoomLarge(direction);
 					}
-				}else if (newDist < (oldDist+3+measureDis)) {
+				}else if (newDist < (oldDist-3-measureDis)) {
+					oldDist = newDist;
 					//small
 					if (mZoomSmallListener!=null) {
 						mZoomSmallListener.onZoomSmall(direction);

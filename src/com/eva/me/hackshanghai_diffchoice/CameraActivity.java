@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.eva.me.hackshanghai_diffchoice.listener.ZoomListener;
+import com.eva.me.hackshanghai_diffchoice.listener.onZoomLargeListener;
+import com.eva.me.hackshanghai_diffchoice.listener.onZoomSmallListener;
 import com.eva.me.hackshanghai_diffchoice.util.FileUtils;
 
 import android.app.Activity;
@@ -22,6 +24,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class CameraActivity extends Activity {
@@ -31,6 +34,10 @@ public class CameraActivity extends Activity {
 	private Context context;
 	private Button btnCamera;
 	private ImageView ivReveal;
+	private Bitmap bitmap;
+	
+	private TextView tvReveal;
+	private int zoomInt = 0;
 	
 	private void showToast(Context context, String str) {
 		Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
@@ -49,11 +56,55 @@ public class CameraActivity extends Activity {
 		//init views
 		btnCamera = (Button) findViewById(R.id.button1);
 		ivReveal = (ImageView) findViewById(R.id.imageView1);
+		tvReveal = (TextView) findViewById(R.id.textView1);
 		
-		ZoomListener mZoomListener = new ZoomListener();
 		
-		
-		ivReveal.setOnTouchListener(l);
+		ZoomListener zoomListener = new ZoomListener();
+		zoomListener.setOnZoomLargeListener(new onZoomLargeListener() {
+			
+			@Override
+			public void onZoomLarge(int direction) {
+				switch (direction) {
+				case ZoomListener.UpDown:
+					zoomInt += 1;
+					tvReveal.setText("zoom large updown : "+zoomInt);
+					break;
+					
+				case ZoomListener.LeftRight:
+					zoomInt += 1;
+					tvReveal.setText("zoom large leftright : "+zoomInt);
+					
+					break;
+
+				default:
+					tvReveal.setText("what a fuck .....");
+					break;
+				}
+			}
+		});
+		zoomListener.setOnZoomSmallListener(new onZoomSmallListener() {
+			
+			@Override
+			public void onZoomSmall(int direction) {
+				switch (direction) {
+				case ZoomListener.UpDown:
+					zoomInt -= 1;
+					tvReveal.setText("zoom small updown : "+zoomInt);
+					break;
+					
+				case ZoomListener.LeftRight:
+					zoomInt -= 1;
+					tvReveal.setText("zoom small leftright : "+zoomInt);
+					
+					break;
+
+				default:
+					tvReveal.setText("what a fuck .....");
+					break;
+				}
+			}
+		});
+		ivReveal.setOnTouchListener(zoomListener);
 		
 		btnCamera.setOnClickListener(new OnClickListener() {
 			
@@ -81,7 +132,7 @@ public class CameraActivity extends Activity {
 	
 	private void initOnActRe(Intent data) {
 		Bundle bundle = data.getExtras();
-		Bitmap bitmap = (Bitmap) bundle.get("data");
+		bitmap = (Bitmap) bundle.get("data");
 //		byte[] data = bundle.get("data");
 		saveImgToSD(bitmap);
 		ivReveal.setImageBitmap(bitmap);
