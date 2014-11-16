@@ -19,7 +19,7 @@ import android.widget.ImageView;
 
 public class MainActivity extends Activity {
 
-	private Button btnCamera;
+	private Button btnCamera, btnAbout;
 	private Context context;
 
 	@Override
@@ -52,6 +52,18 @@ public class MainActivity extends Activity {
 	private void init() {
 		context = MainActivity.this;
 		//init views
+		
+		btnAbout = (Button) findViewById(R.id.menu_about);
+		btnAbout.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent();
+				intent.setClass(MainActivity.this, AboutActivity.class);
+				startActivity(intent);
+			}
+		});
+		
 		btnCamera = (Button) findViewById(R.id.menu_photo);
 		btnCamera.setOnClickListener(new OnClickListener() {
 			
