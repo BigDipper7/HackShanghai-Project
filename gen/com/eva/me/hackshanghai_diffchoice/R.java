@@ -9,6 +9,100 @@ package com.eva.me.hackshanghai_diffchoice;
 
 public final class R {
     public static final class attr {
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int abstractWheelViewStyle=0x7f01000b;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int isAllVisible=0x7f010001;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int isCyclic=0x7f010008;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int itemOffsetPercent=0x7f010002;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int itemsDimmedAlpha=0x7f010007;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int itemsPadding=0x7f010003;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int selectionDivider=0x7f010006;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int selectionDividerActiveAlpha=0x7f010005;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int selectionDividerDimmedAlpha=0x7f010004;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int selectionDividerHeight=0x7f010009;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int selectionDividerWidth=0x7f01000a;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int visibleItems=0x7f010000;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -25,14 +119,16 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080007;
-        public static final int btnCamera=0x7f080003;
-        public static final int btnConfirm=0x7f080006;
+        public static final int action_settings=0x7f080009;
+        public static final int btnCamera=0x7f080004;
+        public static final int btnConfirm=0x7f080007;
+        public static final int btnSelectFile=0x7f080008;
         public static final int button1=0x7f080001;
         public static final int imageView1=0x7f080002;
+        public static final int myImageView1=0x7f080003;
         public static final int textView1=0x7f080000;
-        public static final int tvRight=0x7f080004;
-        public static final int tvTop=0x7f080005;
+        public static final int tvRight=0x7f080005;
+        public static final int tvTop=0x7f080006;
     }
     public static final class layout {
         public static final int activity_camera=0x7f030000;
@@ -79,4 +175,219 @@ public final class R {
          */
         public static final int AppTheme=0x7f060001;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a AbstractWheelView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #AbstractWheelView_isAllVisible com.eva.me.hackshanghai_diffchoice:isAllVisible}</code></td><td></td></tr>
+           <tr><td><code>{@link #AbstractWheelView_isCyclic com.eva.me.hackshanghai_diffchoice:isCyclic}</code></td><td></td></tr>
+           <tr><td><code>{@link #AbstractWheelView_itemOffsetPercent com.eva.me.hackshanghai_diffchoice:itemOffsetPercent}</code></td><td></td></tr>
+           <tr><td><code>{@link #AbstractWheelView_itemsDimmedAlpha com.eva.me.hackshanghai_diffchoice:itemsDimmedAlpha}</code></td><td></td></tr>
+           <tr><td><code>{@link #AbstractWheelView_itemsPadding com.eva.me.hackshanghai_diffchoice:itemsPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #AbstractWheelView_selectionDivider com.eva.me.hackshanghai_diffchoice:selectionDivider}</code></td><td></td></tr>
+           <tr><td><code>{@link #AbstractWheelView_selectionDividerActiveAlpha com.eva.me.hackshanghai_diffchoice:selectionDividerActiveAlpha}</code></td><td></td></tr>
+           <tr><td><code>{@link #AbstractWheelView_selectionDividerDimmedAlpha com.eva.me.hackshanghai_diffchoice:selectionDividerDimmedAlpha}</code></td><td></td></tr>
+           <tr><td><code>{@link #AbstractWheelView_visibleItems com.eva.me.hackshanghai_diffchoice:visibleItems}</code></td><td></td></tr>
+           </table>
+           @see #AbstractWheelView_isAllVisible
+           @see #AbstractWheelView_isCyclic
+           @see #AbstractWheelView_itemOffsetPercent
+           @see #AbstractWheelView_itemsDimmedAlpha
+           @see #AbstractWheelView_itemsPadding
+           @see #AbstractWheelView_selectionDivider
+           @see #AbstractWheelView_selectionDividerActiveAlpha
+           @see #AbstractWheelView_selectionDividerDimmedAlpha
+           @see #AbstractWheelView_visibleItems
+         */
+        public static final int[] AbstractWheelView = {
+            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
+            0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007,
+            0x7f010008
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.eva.me.hackshanghai_diffchoice.R.attr#isAllVisible}
+          attribute's value can be found in the {@link #AbstractWheelView} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.eva.me.hackshanghai_diffchoice:isAllVisible
+        */
+        public static final int AbstractWheelView_isAllVisible = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.eva.me.hackshanghai_diffchoice.R.attr#isCyclic}
+          attribute's value can be found in the {@link #AbstractWheelView} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.eva.me.hackshanghai_diffchoice:isCyclic
+        */
+        public static final int AbstractWheelView_isCyclic = 8;
+        /**
+          <p>This symbol is the offset where the {@link com.eva.me.hackshanghai_diffchoice.R.attr#itemOffsetPercent}
+          attribute's value can be found in the {@link #AbstractWheelView} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.eva.me.hackshanghai_diffchoice:itemOffsetPercent
+        */
+        public static final int AbstractWheelView_itemOffsetPercent = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.eva.me.hackshanghai_diffchoice.R.attr#itemsDimmedAlpha}
+          attribute's value can be found in the {@link #AbstractWheelView} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.eva.me.hackshanghai_diffchoice:itemsDimmedAlpha
+        */
+        public static final int AbstractWheelView_itemsDimmedAlpha = 7;
+        /**
+          <p>This symbol is the offset where the {@link com.eva.me.hackshanghai_diffchoice.R.attr#itemsPadding}
+          attribute's value can be found in the {@link #AbstractWheelView} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.eva.me.hackshanghai_diffchoice:itemsPadding
+        */
+        public static final int AbstractWheelView_itemsPadding = 3;
+        /**
+          <p>This symbol is the offset where the {@link com.eva.me.hackshanghai_diffchoice.R.attr#selectionDivider}
+          attribute's value can be found in the {@link #AbstractWheelView} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.eva.me.hackshanghai_diffchoice:selectionDivider
+        */
+        public static final int AbstractWheelView_selectionDivider = 6;
+        /**
+          <p>This symbol is the offset where the {@link com.eva.me.hackshanghai_diffchoice.R.attr#selectionDividerActiveAlpha}
+          attribute's value can be found in the {@link #AbstractWheelView} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.eva.me.hackshanghai_diffchoice:selectionDividerActiveAlpha
+        */
+        public static final int AbstractWheelView_selectionDividerActiveAlpha = 5;
+        /**
+          <p>This symbol is the offset where the {@link com.eva.me.hackshanghai_diffchoice.R.attr#selectionDividerDimmedAlpha}
+          attribute's value can be found in the {@link #AbstractWheelView} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.eva.me.hackshanghai_diffchoice:selectionDividerDimmedAlpha
+        */
+        public static final int AbstractWheelView_selectionDividerDimmedAlpha = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.eva.me.hackshanghai_diffchoice.R.attr#visibleItems}
+          attribute's value can be found in the {@link #AbstractWheelView} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.eva.me.hackshanghai_diffchoice:visibleItems
+        */
+        public static final int AbstractWheelView_visibleItems = 0;
+        /** Attributes that can be used with a WheelHorizontalView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #WheelHorizontalView_selectionDividerWidth com.eva.me.hackshanghai_diffchoice:selectionDividerWidth}</code></td><td></td></tr>
+           </table>
+           @see #WheelHorizontalView_selectionDividerWidth
+         */
+        public static final int[] WheelHorizontalView = {
+            0x7f01000a
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.eva.me.hackshanghai_diffchoice.R.attr#selectionDividerWidth}
+          attribute's value can be found in the {@link #WheelHorizontalView} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.eva.me.hackshanghai_diffchoice:selectionDividerWidth
+        */
+        public static final int WheelHorizontalView_selectionDividerWidth = 0;
+        /** Attributes that can be used with a WheelVerticalView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #WheelVerticalView_selectionDividerHeight com.eva.me.hackshanghai_diffchoice:selectionDividerHeight}</code></td><td></td></tr>
+           </table>
+           @see #WheelVerticalView_selectionDividerHeight
+         */
+        public static final int[] WheelVerticalView = {
+            0x7f010009
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.eva.me.hackshanghai_diffchoice.R.attr#selectionDividerHeight}
+          attribute's value can be found in the {@link #WheelVerticalView} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.eva.me.hackshanghai_diffchoice:selectionDividerHeight
+        */
+        public static final int WheelVerticalView_selectionDividerHeight = 0;
+    };
 }

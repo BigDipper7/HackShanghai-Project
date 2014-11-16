@@ -1,53 +1,62 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:padding="4dp" >
-
+    android:gravity="center" >
     
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:src="@drawable/ic_launcher" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-        <Button
-            android:id="@+id/btnCamera"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:text="拍照" />
-
-        <TextView
-            android:id="@+id/tvRight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:text=""
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/tvTop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:text=""
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <Button
-            android:id="@+id/btnConfirm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:text="确定" />
-
-    </RelativeLayout>
-    
-</FrameLayout>
+    <com.eva.me.hackshanghai_diffchoice.view.MyImageView
+        android:id="@+id/myImageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+	    
+	<RelativeLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" >
+	
+	    <Button
+	        android:id="@+id/btnCamera"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true"
+	        android:text="拍照" />
+	
+	    <TextView
+	        android:id="@+id/tvRight"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_centerVertical="true"
+	        android:text=""
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+	
+	    <TextView
+	        android:id="@+id/tvTop"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentTop="true"
+	        android:layout_centerHorizontal="true"
+	        android:text=""
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+	
+	    <Button
+	        android:id="@+id/btnConfirm"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignParentTop="true"
+	        android:text="确定" />
+	
+	    <Button
+	        android:id="@+id/btnSelectFile"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentTop="true"
+	        android:layout_centerHorizontal="true"
+	        android:text="选择文件" />
+	
+	</RelativeLayout>
+	    
+</RelativeLayout>

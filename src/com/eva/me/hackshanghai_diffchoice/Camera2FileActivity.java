@@ -1,6 +1,7 @@
 package com.eva.me.hackshanghai_diffchoice;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.BreakIterator;
 import java.util.List;
@@ -11,16 +12,21 @@ import com.eva.me.hackshanghai_diffchoice.listener.onZoomSmallListener;
 import com.eva.me.hackshanghai_diffchoice.util.FileUtils;
 import com.eva.me.hackshanghai_diffchoice.util.ImagePiece;
 import com.eva.me.hackshanghai_diffchoice.util.ImageUtils;
+import com.eva.me.hackshanghai_diffchoice.view.MyImageView;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,15 +38,18 @@ import android.widget.Toast;
 
 public class Camera2FileActivity extends Activity {
 
-	private Button btnCamera, btnConfirm;
-	private Bitmap bm=null;
+	private int WIDTH, HIGHT;
+	
+	private Button btnCamera, btnConfirm, btnSelectFile;
+	private Bitmap bm = null;
 	private ImageView ivReveal;
 	private TextView tvRight, tvTop;
 	private String TAG = "Camera2FileActivity";
 	private Context context;
+	private MyImageView myImageView;
 	
-	private int sizeVertical = 2;
-	private int sizeHorizontal = 2;
+	public static int sizeVertical = 2;
+	public static int sizeHorizontal = 2;
 	//max value 
 	private final int maxHorizontalSize  = 20;
 	private final int maxVerticalSize = 20;
@@ -65,13 +74,22 @@ public class Camera2FileActivity extends Activity {
 	}
 
 	private void init() {
+		DisplayMetrics mDisplayMetrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(mDisplayMetrics);
+		WIDTH = mDisplayMetrics.widthPixels;
+		HIGHT = mDisplayMetrics.heightPixels;
+		Log.d(TAG, "WIDTH: "+WIDTH+" HIGHT: "+HIGHT);
+		
 		context = Camera2FileActivity.this;
 		//init views
 		btnCamera = (Button) findViewById( R.id.btnCamera);
 		btnConfirm = (Button) findViewById(R.id.btnConfirm);
+		btnSelectFile = (Button) findViewById(R.id.btnSelectFile);
 		ivReveal = (ImageView) findViewById( R.id.imageView1);
 		tvRight = (TextView) findViewById(R.id.tvRight);
 		tvTop = (TextView) findViewById(R.id.tvTop);
+		myImageView = (MyImageView) findViewById(R.id.myImageView1);
+		myImageView.setWIDTHHIGHT(WIDTH, HIGHT);
 		
 		btnCamera.setOnClickListener(new OnClickListener() {
 			
@@ -101,6 +119,21 @@ public class Camera2FileActivity extends Activity {
 			}
 		});
 		
+		btnSelectFile.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+                Intent intent = new Intent();  
+                /* 开启Pictures画面Type设定为image */  
+                intent.setType("image/*");  
+                /* 使用Intent.ACTION_GET_CONTENT这个Action */  
+                intent.setAction(Intent.ACTION_GET_CONTENT);   
+                /* 取得相片后返回本画面 */  
+                startActivityForResult(intent, 2);  
+				
+			}
+		});
+		
 		//TEMP
 		mHandler = new Handler() {
 			public void handleMessage(android.os.Message msg) {
@@ -123,7 +156,8 @@ public class Camera2FileActivity extends Activity {
 					return;
 				}
 				ImagePiece temp = lPieces.get(label);
-				ivReveal.setImageBitmap(temp.bitmap);
+//				ivReveal.setImageBitmap(temp.bitmap);
+				myImageView.setBitmap(temp.bitmap);
 				label++;
 				mHandler.postDelayed(runnable, 1000);
 			}
@@ -139,11 +173,13 @@ public class Camera2FileActivity extends Activity {
 //					sizeHorizontal+=1;
 					sizeHorizontal = (sizeHorizontal+1)>maxHorizontalSize? maxHorizontalSize: (sizeHorizontal+1) ;
 					tvTop.setText("当前横向格子数："+sizeHorizontal);
+					myImageView.setSizeHorizontal(sizeHorizontal);
 					break;
 				case ZoomListener.UpDown:
 //					sizeVertical+=1;
 					sizeVertical = (sizeVertical+1) > maxVerticalSize?maxVerticalSize:(sizeVertical+1);
 					tvRight.setText("当前纵向格子数："+sizeVertical);
+					myImageView.setSizeVertical(sizeVertical);
 					break;
 
 				default:
@@ -160,11 +196,13 @@ public class Camera2FileActivity extends Activity {
 //					sizeHorizontal-=1;
 					sizeHorizontal = (sizeHorizontal-1)<2?2:(sizeHorizontal-1);
 					tvTop.setText("当前横向格子数："+sizeHorizontal);  
+					myImageView.setSizeHorizontal(sizeHorizontal);
 					break;
 				case ZoomListener.UpDown:
 //					sizeVertical-=1;
 					sizeVertical = (sizeVertical-1)<2?2:(sizeVertical-1);
 					tvRight.setText("当前纵向格子数："+sizeVertical);
+					myImageView.setSizeVertical(sizeVertical);
 					break;
 
 				default:
@@ -172,18 +210,36 @@ public class Camera2FileActivity extends Activity {
 				}
 			}
 		});
-		ivReveal.setOnTouchListener(mZoomListener);
+//		ivReveal.setOnTouchListener(mZoomListener);
+		myImageView.setOnTouchListener(mZoomListener);
 	}
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (resultCode == Activity.RESULT_OK) {
-//			Bundle bundle = data.getExtras();//用这两句就有问题 妈蛋。。。也是醉了
-//			Bitmap bm = (Bitmap) bundle.get("data");
-			Log.d(TAG, "onActivityResult in");//曲线救国喽~
-			bm = FileUtils.getLoacalBitmap();
-			ivReveal.setImageBitmap(bm);
-			hasResult = true;
+			if (requestCode == 1) {
+
+//				Bundle bundle = data.getExtras();//用这两句就有问题 妈蛋。。。也是醉了
+//				Bitmap bm = (Bitmap) bundle.get("data");
+				Log.d(TAG, "onActivityResult in");//曲线救国喽~
+				bm = FileUtils.getImage(HIGHT, WIDTH);//压缩bitmap
+//				ivReveal.setImageBitmap(bm);
+				myImageView.setBitmap(bm);
+				
+				sizeHorizontal = 2;
+				sizeVertical = 2;
+				hasResult = true;
+				
+			} else if (requestCode == 2) {
+	            Uri uri = data.getData();  
+	            Log.e("uri", uri.toString());  
+	            bm = FileUtils.getImageFromUri(uri, HIGHT, WIDTH, context);
+				myImageView.setBitmap(bm);
+
+				sizeHorizontal = 2;
+				sizeVertical = 2;
+			} 
+			
 		}
 		
 		super.onActivityResult(requestCode, resultCode, data);
