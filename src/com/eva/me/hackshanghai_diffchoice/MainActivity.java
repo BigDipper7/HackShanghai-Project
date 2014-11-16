@@ -3,10 +3,14 @@ package com.eva.me.hackshanghai_diffchoice;
 import com.eva.me.hackshanghai_diffchoice.selector.CustomerActivity;
 import com.eva.me.hackshanghai_diffchoice.selector.SelectorActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,12 +19,14 @@ import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 public class MainActivity extends Activity {
 
 	private Button btnCamera, btnAbout;
 	private Context context;
+	private static final String NAME = "GroupName";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -91,12 +97,47 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(MainActivity.this,CustomerActivity.class);
-				startActivity(intent);
+				openDialog();
+				//Intent intent = new Intent(MainActivity.this,CustomerActivity.class);
+				//startActivity(intent);
 			}
 		});
 	}
 
+	private void openDialog() {
+		/*new AlertDialog.Builder(this)
+		.setTitle(R.string.setting_title)
+		.setItems(R.array.type, new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(SelectorActivity.this,CustomerActivity.class);
+				startActivity(intent);
+			}
+		}).show();*/
+		LayoutInflater factory = LayoutInflater.from(this);
+		final EditText editText = new EditText(this);
+		new AlertDialog.Builder(this).setTitle("请输入用户组名").setView(
+				editText).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+					
+					@SuppressLint("NewApi") @Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						String data = editText.getText().toString();
+						
+						if (data != null && data != "" && !data.trim().isEmpty())
+						{
+							Intent intent = new Intent(MainActivity.this,CustomerActivity.class);
+							intent.putExtra(NAME, data);
+							startActivity(intent);
+						}
+					}
+				})
+				.setNegativeButton("取消", null).show();
+	}
+	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

@@ -109,7 +109,6 @@ public class SelectorActivity extends Activity {
 		if (groupsSet != null) {
 			Iterator<String> iterator = groupsSet.iterator();
 			Log.e("hellhsk", "in  group....");
-			while (iterator.hasNext()) {
 				Log.e("hellhsk", "in  group....2");
 				Button button = new Button(SelectorActivity.this);
 //				button.setText(iterator.next());
@@ -139,7 +138,7 @@ public class SelectorActivity extends Activity {
 				lp.addView(vTemp);
 			}
 		}
-	}
+	
 	
 	private void openDialog() {
 		/*new AlertDialog.Builder(this)
