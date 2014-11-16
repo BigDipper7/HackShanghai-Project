@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="type">
+        <item>@string/setting_food</item>
+        <item>@string/setting_drink</item>
+        <item>@string/setting_travel</item>
+    </array>
+</resources>

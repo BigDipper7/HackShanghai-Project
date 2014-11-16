@@ -9,9 +9,11 @@ import java.util.List;
 import com.eva.me.hackshanghai_diffchoice.listener.ZoomListener;
 import com.eva.me.hackshanghai_diffchoice.listener.onZoomLargeListener;
 import com.eva.me.hackshanghai_diffchoice.listener.onZoomSmallListener;
+import com.eva.me.hackshanghai_diffchoice.selector.WheelActivity;
 import com.eva.me.hackshanghai_diffchoice.util.FileUtils;
 import com.eva.me.hackshanghai_diffchoice.util.ImagePiece;
 import com.eva.me.hackshanghai_diffchoice.util.ImageUtils;
+import com.eva.me.hackshanghai_diffchoice.util.TempForList;
 import com.eva.me.hackshanghai_diffchoice.view.MyImageView;
 
 import android.app.Activity;
@@ -40,11 +42,13 @@ public class Camera2FileActivity extends Activity {
 
 	private int WIDTH, HIGHT;
 	
+	
 	private Button btnCamera, btnConfirm, btnSelectFile;
 	private Bitmap bm = null;
 	private ImageView ivReveal;
 	private TextView tvRight, tvTop;
 	private String TAG = "Camera2FileActivity";
+	private static String TYPE = "TYPE";
 	private Context context;
 	private MyImageView myImageView;
 	
@@ -111,8 +115,12 @@ public class Camera2FileActivity extends Activity {
 			public void onClick(View v) {
 				if (bm != null) {
 					lPieces = ImageUtils.split(bm, sizeHorizontal, sizeVertical);
-					
-					mHandler.obtainMessage(1223).sendToTarget();
+					Intent intent = new Intent();
+					intent.setClass(Camera2FileActivity.this, WheelActivity.class);
+					TempForList.lPieces = lPieces;
+					intent.putExtra(TYPE, 6);
+					startActivity(intent);
+//					mHandler.obtainMessage(1223).sendToTarget();
 				}else {
 					showToast(context, "没有图片~ 请先拍摄...");
 				}
@@ -172,13 +180,13 @@ public class Camera2FileActivity extends Activity {
 				case ZoomListener.LeftRight:
 //					sizeHorizontal+=1;
 					sizeHorizontal = (sizeHorizontal+1)>maxHorizontalSize? maxHorizontalSize: (sizeHorizontal+1) ;
-					tvTop.setText("当前横向格子数："+sizeHorizontal);
+					tvTop.setText("横向格子数："+sizeHorizontal);
 					myImageView.setSizeHorizontal(sizeHorizontal);
 					break;
 				case ZoomListener.UpDown:
 //					sizeVertical+=1;
 					sizeVertical = (sizeVertical+1) > maxVerticalSize?maxVerticalSize:(sizeVertical+1);
-					tvRight.setText("当前纵向格子数："+sizeVertical);
+					tvRight.setText("纵向格子数："+sizeVertical);
 					myImageView.setSizeVertical(sizeVertical);
 					break;
 
