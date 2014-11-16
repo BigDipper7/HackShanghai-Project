@@ -247,13 +247,13 @@ public class WheelActivity extends Activity {
 		@Override
 		public int getItemsCount() {
 			// TODO Auto-generated method stub
-			return 0;
+			return imgList.size();
 		}
 
 		@Override
 		protected CharSequence getItemText(int index) {
 			// TODO Auto-generated method stub
-			return null;
+			return String.valueOf(imgList.get(index));
 		}
 		
 		@Override
