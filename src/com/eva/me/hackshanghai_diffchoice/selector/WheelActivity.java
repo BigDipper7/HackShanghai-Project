@@ -62,9 +62,9 @@ public class WheelActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent();
-				intent.setClass(WheelActivity.this, SelectorActivity.class);
-				startActivity(intent);
+//				Intent intent = new Intent();
+//				intent.setClass(WheelActivity.this, SelectorActivity.class);
+//				startActivity(intent);
 				finish();
 			}
 		});
